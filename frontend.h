@@ -1,8 +1,11 @@
 #pragma once
 #include "includeHeader.h"
-#include "imgui.h"
 
 namespace SWESoftware {
 
-	void designGUI();
+	void StartGUI();
+	void EinkaufGUI();
+	void VerkaufGUI();
+	void LagerGUI();
+	void LieferantenGUI();
 }

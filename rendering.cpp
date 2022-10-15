@@ -1,7 +1,5 @@
 #include "rendering.h"
-#include "frontend.h"
 
-#include <chrono>
 
 
 
@@ -11,7 +9,7 @@ void delay(std::chrono::high_resolution_clock::time_point& pstart)
 	auto stop = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - pstart).count();
 	
-	auto to_wait ((1000 / (30)) - duration);
+	auto to_wait ((1000 / (30+6)) - duration); //seems to wait to exact 30fps, dont ask me for the +6 offset
 	std::this_thread::sleep_for(std::chrono::milliseconds(to_wait));
 }
 void delay() {
@@ -93,22 +91,14 @@ int imguiMain() {
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
-
-
-
 	// Main while loop
-
-
 
 	while (!glfwWindowShouldClose(window))
 	{
 		std::chrono::high_resolution_clock::time_point frame_starttime = std::chrono::high_resolution_clock::now();
 
-
-
-
 		// Specify the color of the background
-		glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
+		glClearColor(0.49f, 0.49f, 0.49f, 1.0f);
 		// Clean the back buffer and assign the new color to it
 		glClear(GL_COLOR_BUFFER_BIT);
 
@@ -116,7 +106,9 @@ int imguiMain() {
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
-		//BELOW HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+		//BELOW HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 		ImGuiIO GuiIOTemp = ImGui::GetIO();
 		float x = GuiIOTemp.DisplaySize.x;
@@ -129,7 +121,15 @@ int imguiMain() {
 
 		// ImGUI window creation
 
-		SWESoftware::designGUI();
+		SWESoftware::StartGUI();
+		SWESoftware::EinkaufGUI();
+		SWESoftware::VerkaufGUI();
+		SWESoftware::LagerGUI();
+
+
+
+
+
 
 		// Renders the ImGUI elements
 		ImGui::Render();
@@ -138,6 +138,7 @@ int imguiMain() {
 		glfwSwapBuffers(window);
 		// Take care of all GLFW events
 		glfwPollEvents();
+
 
 		//FPS limiter below
 		//void (*delayfunc)(std::chrono::high_resolution_clock::time_point&) = &delay; //tells the compiler which version of the delay function he should use, remove the 'int' to change paramters requirement to (), values are in microseconds
