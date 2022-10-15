@@ -41,7 +41,7 @@ bool SWESoftware::Lager::saveToFile() {
 
 }
 
-void SWESoftware::Lager::DecrementProdukt(Produkt toDecrement) {
+void SWESoftware::Lager::DecrementProdukt() {
 
 }
 

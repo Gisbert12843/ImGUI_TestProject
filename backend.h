@@ -25,7 +25,7 @@ namespace SWESoftware {
 
 	public:
 		bool saveToFile();
-		void DecrementProdukt(Produkt toDecrement);
+		void DecrementProdukt();
 
 	};
 
