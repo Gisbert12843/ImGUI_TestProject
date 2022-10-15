@@ -3,13 +3,11 @@
 namespace SWESoftware{
 	void StartGUI()
 	{
-		ImGui::Begin("Main", NULL);
 
+		ImGui::Begin("Main", NULL);
 
 		static float value = 0.5f;
 		ImGui::DragFloat("value", &value);
-
-
 		ImGui::Text("(% .1f FPS)", 1000.0 / double(ImGui::GetIO().Framerate), double(ImGui::GetIO().Framerate));
 		if (ImGui::Button("Click me")) {
 			// onButtonClick();
@@ -42,5 +40,7 @@ namespace SWESoftware{
 		ImGui::Text("Lieferanden-GUI");
 		ImGui::End();
 	}
+
+
 
 }

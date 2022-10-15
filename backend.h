@@ -44,7 +44,7 @@ namespace SWESoftware {
 
 	};
 
-
+	
 
 
 	class Lieferer

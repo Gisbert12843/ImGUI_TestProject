@@ -9,7 +9,7 @@ void delay(std::chrono::high_resolution_clock::time_point& pstart)
 	auto stop = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - pstart).count();
 	
-	auto to_wait ((1000 / 23) - duration); //seems to wait to exact 30fps, dont ask me for the +6 offset
+	auto to_wait ((1000/ duration)); //seems to wait to exact 30fps at 30+6, dont ask me for the +6 offset
 	std::this_thread::sleep_for(std::chrono::milliseconds(to_wait));
 }
 void delay() {
@@ -91,6 +91,8 @@ int imguiMain() {
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
+	glfwSwapInterval(1);
+
 	// Main while loop
 
 	while (!glfwWindowShouldClose(window))
@@ -136,12 +138,13 @@ int imguiMain() {
 		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
 		// Take care of all GLFW events
-		glfwPollEvents();
+		//glfwPollEvents();
+		glfwWaitEventsTimeout(0.2); //idles the programm when nothing happened
 
 
 		//FPS limiter below
 		//void (*delayfunc)(std::chrono::high_resolution_clock::time_point&) = &delay; //tells the compiler which version of the delay function he should use, remove the 'int' to change paramters requirement to (), values are in microseconds
-		delay(frame_starttime);
+		//delay(frame_starttime);
 		//FPS limiter above
 
 	}
