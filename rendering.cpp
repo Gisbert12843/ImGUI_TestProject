@@ -9,7 +9,7 @@ void delay(std::chrono::high_resolution_clock::time_point& pstart)
 	auto stop = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - pstart).count();
 	
-	auto to_wait ((1000 / (30+6)) - duration); //seems to wait to exact 30fps, dont ask me for the +6 offset
+	auto to_wait ((1000 / 23) - duration); //seems to wait to exact 30fps, dont ask me for the +6 offset
 	std::this_thread::sleep_for(std::chrono::milliseconds(to_wait));
 }
 void delay() {
@@ -80,8 +80,8 @@ int imguiMain() {
 	gladLoadGL();
 	// Specify the viewport of OpenGL in the Window
 	// In this case the viewport goes from x = 0, y = 0, to x = 800, y = 800
-	//glViewport(0, 0, glfwGetVideoMode(glfwGetPrimaryMonitor())->width, glfwGetVideoMode(glfwGetPrimaryMonitor())->width);
-	glViewport(0, 0, 800,800);
+	glViewport(0, 0, glfwGetVideoMode(glfwGetPrimaryMonitor())->width, glfwGetVideoMode(glfwGetPrimaryMonitor())->width);
+	//glViewport(0, 0, 800,800);
 
 	// Initialize ImGUI
 	IMGUI_CHECKVERSION();
@@ -120,7 +120,6 @@ int imguiMain() {
 
 
 		// ImGUI window creation
-
 		SWESoftware::StartGUI();
 		SWESoftware::EinkaufGUI();
 		SWESoftware::VerkaufGUI();

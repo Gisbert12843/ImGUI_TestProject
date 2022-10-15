@@ -1,11 +1,8 @@
 #include "backend.h"
 
-SWESoftware::Produkt::Produkt() { ; }
-
-SWESoftware::Produkt::~Produkt() { delete(this); }
 
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 SWESoftware::Lager::Lager() { ; }
@@ -41,10 +38,30 @@ bool SWESoftware::Lager::saveToFile() {
 
 }
 
+void SWESoftware::Lager::add_to_lager(std::string name, int menge, std::string lagerort)
+{
+
+}
 void SWESoftware::Lager::DecrementProdukt() {
 
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+SWESoftware::Produkt::Produkt(std::string name, int menge, std::string lagerort)
+{
+	this->name = name;
+	this->menge = menge;
+	this->lagerort = lagerort;
+
+};
+
+SWESoftware::Produkt::~Produkt() { delete(this); }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 SWESoftware::Lieferer::Lieferer()
