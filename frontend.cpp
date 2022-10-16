@@ -1,46 +1,79 @@
 #include "frontend.h"
 
-namespace SWESoftware{
-	void StartGUI()
+	void SWESoftware::StartGUI(std::vector<void(*)()>& vectoroffunctions)
 	{
+		ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y * 0.14));
+		ImGui::Begin("Main", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar );
 
-		ImGui::Begin("Main", NULL);
+		//static float value = 0.5f;
+		//ImGui::DragFloat("value", &value);
+		//ImGui::Text("(% .1f FPS)", 1000.0 / double(ImGui::GetIO().Framerate), double(ImGui::GetIO().Framerate));
 
-		static float value = 0.5f;
-		ImGui::DragFloat("value", &value);
-		ImGui::Text("(% .1f FPS)", 1000.0 / double(ImGui::GetIO().Framerate), double(ImGui::GetIO().Framerate));
-		if (ImGui::Button("Click me")) {
-			// onButtonClick();
+		if (ImGui::Button("Einkauf")) {
+			vectoroffunctions.clear();
+			vectoroffunctions.push_back(EinkaufGUI);
 		}
+
+		if (ImGui::Button("Verkauf")) {
+			vectoroffunctions.clear();
+			vectoroffunctions.push_back(VerkaufGUI);
+		}
+
+		if (ImGui::Button("Lager")) {
+			vectoroffunctions.clear();
+			vectoroffunctions.push_back(LagerGUI);
+		}
+		if (ImGui::Button("Lieferanden")) {
+			vectoroffunctions.clear();
+			vectoroffunctions.push_back(LieferantenGUI);
+		}
+
 
 		ImGui::End();
 	}
 
-	void EinkaufGUI()
+	void SWESoftware::EinkaufGUI()
 	{
-		ImGui::Begin("Einkauf");
+		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 1));
+		ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y * 0.86));
+
+		bool is_close = false;
+		ImGui::Begin("Einkauf", &is_close, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize);
+
+
 		ImGui::Text("Einkaufs-GUI");
 		ImGui::End();
 	}
-	void VerkaufGUI()
+	void SWESoftware::VerkaufGUI()
 	{
-		ImGui::Begin("Verkauf");
+		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 1));
+		ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y * 0.86));
+
+
+		ImGui::Begin("Verkauf",NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize);
 		ImGui::Text("Verkaufs-GUI");
 		ImGui::End();
 	}
-	void LagerGUI()
+	void SWESoftware::LagerGUI()
 	{
-		ImGui::Begin("Lager");
+		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 1));
+		ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y * 0.86));
+
+
+		ImGui::Begin("Lager",0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize);
 		ImGui::Text("Lager-GUI");
 		ImGui::End();
 	}
-	void LieferantenGUI()
+	void SWESoftware::LieferantenGUI()
 	{
-		ImGui::Begin("Lieferanden");
+		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 1));
+		ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y * 0.86));
+
+
+		ImGui::Begin("Lieferanden",0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize);
 		ImGui::Text("Lieferanden-GUI");
 		ImGui::End();
 	}
 
 
 
-}

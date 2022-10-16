@@ -91,9 +91,12 @@ int imguiMain() {
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init("#version 330");
 
-	glfwSwapInterval(1);
+	glfwSwapInterval(1); //enables VSYNC
 
 	// Main while loop
+
+	std::vector<void (*)()> vectoroffunctions = {}; //Stores the imgui draw functions for the different windows like lieferanden, lager etc
+
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -122,11 +125,10 @@ int imguiMain() {
 
 
 		// ImGUI window creation
-		SWESoftware::StartGUI();
-		SWESoftware::EinkaufGUI();
-		SWESoftware::VerkaufGUI();
-		SWESoftware::LagerGUI();
+		SWESoftware::StartGUI(vectoroffunctions);
 
+		for (auto&& fn : vectoroffunctions) //this also opens all imgui windows stored to be opened the same way as by doing it normally
+			fn();
 
 
 

@@ -3,7 +3,7 @@
 
 namespace SWESoftware {
 
-	void StartGUI();
+	void StartGUI(std::vector<void(*)()>& vectoroffunctions);
 	void EinkaufGUI();
 	void VerkaufGUI();
 	void LagerGUI();
