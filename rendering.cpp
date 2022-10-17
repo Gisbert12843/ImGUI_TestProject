@@ -47,8 +47,8 @@ void delay(int microseconds_to_wait)
 }
 
 
-template <class T>
-int initGUI() {
+
+int imguiMain() {
 	// Initialize GLFW
 	glfwInit();
 
@@ -128,12 +128,11 @@ int initGUI() {
 		SWESoftware::StartGUI(vectoroffunctions);
 
 		for (auto&& fn : vectoroffunctions) //this also opens all imgui windows stored to be opened the same way as by doing it normally
-			fn();	
+			fn();
 
 
 
 
-		//ABOVE HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 		// Renders the ImGUI elements
 		ImGui::Render();

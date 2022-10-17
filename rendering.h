@@ -4,7 +4,7 @@
 
 #include <chrono>
 
-int initGUI();
+int imguiMain();
 
 void delay();
 void delay(std::chrono::high_resolution_clock::time_point& pstart);

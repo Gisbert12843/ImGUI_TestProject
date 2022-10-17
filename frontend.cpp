@@ -138,7 +138,7 @@
 
 
 
-			
+
 
 		ImGui::End();
 	}
@@ -150,7 +150,7 @@
 
 	void SWESoftware::EinkaufGUI()
 	{
-		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 0));
+		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 1));
 		ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y * 0.86));
 
 		bool is_close = false;
@@ -164,7 +164,7 @@
 
 	void SWESoftware::VerkaufGUI()
 	{
-		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 0));
+		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 1));
 		ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y * 0.86));
 
 
@@ -174,30 +174,17 @@
 	}
 	void SWESoftware::LagerGUI()
 	{
-		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 0));
+		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 1));
 		ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y * 0.86));
 
 
 		ImGui::Begin("Lager",0, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar);
 		ImGui::Text("Lager-GUI");
-		if (ImGui::BeginTable("Lager_Table", 3))
-		{
-			for (int row = 0; row < 4; row++)
-			{
-				ImGui::TableNextRow();
-				for (int column = 0; column < 3; column++)
-				{
-					ImGui::TableSetColumnIndex(column);
-					ImGui::Text("Row %d Column %d", row, column);
-				}
-			}
-			ImGui::EndTable();
-		}
 		ImGui::End();
 	}
 	void SWESoftware::LieferantenGUI()
 	{
-		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 0));
+		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 1));
 		ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y * 0.86));
 
 
@@ -207,7 +194,7 @@
 	}
 	void SWESoftware::DashboardGUI()
 	{
-		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 0));
+		ImGui::SetNextWindowPos(ImVec2(0, ImGui::GetIO().DisplaySize.y * 0.14 + 1));
 		ImGui::SetNextWindowSize(ImVec2(ImGui::GetIO().DisplaySize.x, ImGui::GetIO().DisplaySize.y * 0.86));
 
 
