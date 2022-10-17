@@ -8,6 +8,7 @@ namespace SWESoftware {
 	void VerkaufGUI();
 	void LagerGUI();
 	void LieferantenGUI();
+    void DashboardGUI();
 }
 
 enum SmartButtonState {
