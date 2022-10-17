@@ -44,10 +44,11 @@ namespace SWESoftware {
 		std::map<int, Produkt*> get_lager() { return lager_from_int; }
 		
 		void add_to_lager(SWESoftware::Produkt product_to_add);
-
 		void add_to_lager(int SWE_EAN, std::string product_name, int amount_to_increment, std::string lagerort);
-		bool saveLagerToFile();
 		bool DecrementProdukt(int SWE_EAN, int amount_to_decrement);
+
+		bool saveLagerToFile();
+		
 
 		
 	};
